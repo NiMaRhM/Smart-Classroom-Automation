@@ -1,5 +1,5 @@
 # Classroom Recording System
-
+<img width="1917" height="931" alt="Screenshot 2026-07-11 142124" src="https://github.com/user-attachments/assets/3668e2e4-d338-4b6c-9fa5-a8a588dc9d3c" />
 An integrated hardware-software system for recording classroom lectures, transcribing Persian speech, and generating concise AI-powered summaries.
 
 The system uses an **ESP32-based recording device** with an I2S microphone, DHT11 environmental sensor, and ST7735 TFT display. A Python server receives audio streams, stores recordings, transcribes Persian speech with Whisper, and provides a web interface for teachers and students.
