@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="fa">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+  <title>Student</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <h1>کلاس های ضبط شده</h1>
+      </div>
+
+      <div class="controls">
+        <div class="field">
+          <label class="label" for="q">جستجو</label>
+          <input class="input" id="q" value="{{ q|e }}" placeholder="نام فایل">
+        </div>
+
+        <div class="field">
+          <label class="label" for="sort">مرتب سازی</label>
+          <select class="select" id="sort">
+            <option value="new" {% if sort=="new" %}selected{% endif %}>جدیدترین</option>
+            <option value="old" {% if sort=="old" %}selected{% endif %}>قدیمی ترین</option>
+            <option value="name" {% if sort=="name" %}selected{% endif %}>نام</option>
+          </select>
+        </div>
+
+        <a class="btn" href="/">🏠 خانه</a>
+        <button id="runSpeechBtn" class="btn" type="button">speech</button>
+        <button class="btn primary" id="refreshBtn" type="button">⟳ Refresh</button>
+      </div>
+    </div>
+
+<main class="split">
+  <section>
+    <div class="col-title">recordings</div>
+
+    {% if left_files|length == 0 %}
+      <div class="empty">
+      </div>
+    {% else %}
+      <div class="grid">
+        {% for f in left_files %}
+          <article class="card">
+<div class="row">
+  <div class="title">{{ f.name }}</div>
+  <a class="btn ghost" href="/recordings/{{ f.url|urlencode }}" download>دانلود</a>
+</div>
+
+
+            <div class="meta">
+              <span>{{ f.time }}</span><span class="dot">•</span><span>{{ f.size }}</span>
+            </div>
+            <audio controls preload="metadata">
+              <source src="/recordings/{{ f.url|urlencode }}" type="audio/wav">
+            </audio>
+          </article>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </section>
+  <section>
+    <div class="col-title">recordings/clean</div>
+
+    {% if right_files|length == 0 %}
+      <div class="empty">
+      </div>
+    {% else %}
+      <div class="grid">
+        {% for f in right_files %}
+          <article class="card">
+<div class="row">
+  <div class="title">{{ f.name }}</div>
+  <div class="actions">
+    <button class="btn ghost" type="button" onclick="openText('summery','{{ f.name|e }}')">خلاصه</button>
+    <button class="btn ghost" type="button" onclick="openText('speech','{{ f.name|e }}')">متن</button>
+    <a class="btn ghost" href="/recordings/{{ f.url|urlencode }}" download>دانلود</a>
+  </div>
+</div>
+            <div class="meta">
+              <span>{{ f.time }}</span><span class="dot">•</span><span>{{ f.size }}</span>
+            </div>
+            <audio controls preload="metadata">
+              <source src="/recordings/{{ f.url|urlencode }}" type="audio/wav">
+            </audio>
+          </article>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </section>
+</main>
+
+  </div>
+  <script src="{{ url_for('static', filename='app_student.js') }}"></script>
+    <div id="textModal" class="modal hidden" aria-hidden="true">
+  <div class="modal-overlay" onclick="closeModal()"></div>
+
+  <div class="modal-panel" role="dialog" aria-modal="true">
+    <div class="modal-header">
+      <div class="modal-title" id="modalTitle"></div>
+      <button class="btn ghost" type="button" onclick="closeModal()">بستن</button>
+    </div>
+
+    <div class="modal-body">
+      <pre id="modalContent" class="modal-pre">در حال بارگذاری...</pre>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

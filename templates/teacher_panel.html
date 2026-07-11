@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="fa">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+  <title>Teacher Panel</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <h1>پنل استاد</h1>
+      </div>
+      <div class="controls">
+        <a class="btn" href="/student">👩‍🎓 صفحه دانشجو</a>
+        <a class="btn" href="/teacher/logout">خروج</a>
+      </div>
+    </div>
+
+    <div class="card teacher-card">
+      <div class="status">
+        <div>
+          <div class="k">Device</div>
+          <div class="v" id="devStatus">...</div>
+        </div>
+        <div>
+          <div class="k">Recording</div>
+          <div class="v" id="recStatus">...</div>
+        </div>
+      </div>
+
+      <div class="row-btns">
+        <button class="btn primary" id="btnStart">▶ شروع ضبط</button>
+        <button class="btn danger" id="btnStop">■ توقف ضبط</button>
+      </div>
+    </div>
+  </div>
+  <script src="{{ url_for('static', filename='app_teacher.js') }}"></script>
+</body>
+</html>

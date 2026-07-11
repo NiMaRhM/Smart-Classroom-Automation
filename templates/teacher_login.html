@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="fa">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+  <title>Teacher Login</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div class="wrap">
+    <div class="card hero teacher-login">
+      <h1>ورود استاد</h1>
+      <p class="subtitle">برای ورود رمز را وارد کنید</p>
+
+      <form method="post" action="/teacher" class="login">
+        <input class="input" name="password" type="password" placeholder="رمز" autofocus>
+        <button class="btn primary" type="submit">ورود</button>
+      </form>
+      {% if error %}
+        <p class="error">{{ error }}</p>
+      {% endif %}
+      <div class="row-btns">
+        <a class="btn" href="/">🏠 خانه</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
