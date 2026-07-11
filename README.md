@@ -25,22 +25,22 @@ The system uses an **ESP32-based recording device** with an I2S microphone, DHT1
 ## Architecture
 
 ```text
-┌──────────────────┐      WebSocket Audio       ┌─────────────────────┐
-│   ESP32 Device   │ ─────────────────────────▶ │    Python Server    │
-│                  │                            │                     │
-│  -  I2S Microphone│                            │  -  Flask Web UI     │
-│  -  DHT11 Sensor  │ ◀───────────────────────── │  -  WebSocket Server │
-│  -  TFT Display   │     WebSocket Commands     │  -  File Storage     │
-└──────────────────┘                            └──────────┬──────────┘
+┌──────────────────┐      WebSocket Audio        ┌─────────────────────┐
+│   ESP32 Device   │ ─────────────────────────▶ │   Python Server      │
+│                  │                             │                      │
+│  -  I2S Microphone│                            │  -  Flask Web UI      │
+│  -  DHT11 Sensor  │ ◀─────────────────────────│  -  WebSocket Server  │
+│  -  TFT Display   │     WebSocket Commands    │  -  File Storage      │
+└──────────────────┘                            └──────────┬────────────┘
                                                             │
                                                             ▼
-                                                  ┌──────────────────┐
-                                                  │    speech.py     │
-                                                  │                  │
+                                                  ┌────────────────────┐
+                                                  │    speech.py       │
+                                                  │                    │
                                                   │  -  Noise Reduction│
                                                   │  -  Whisper STT    │
                                                   │  -  LLM Summary    │
-                                                  └──────────────────┘
+                                                  └────────────────────┘
 ```
 
 ---
