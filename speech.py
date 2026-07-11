@@ -46,7 +46,7 @@ initial_prompt = """
 """
 
 
-OPENAI_API_KEY = "csk-88dfmk4pkm9c3vpvcdfh9cxmttvrmkwtv55k9rknfhkjm2kk"
+OPENAI_API_KEY = "CHANGE ME"
 AVALAI_BASE_URL = "https://api.cerebras.ai/v1"
 MODEL_NAME = "llama-3.3-70b"
 
