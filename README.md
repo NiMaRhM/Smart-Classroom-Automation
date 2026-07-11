@@ -484,32 +484,6 @@ Before deploying the system in a real classroom:
 
 ---
 
-## Contributing
-
-Contributions are welcome.
-
-1. Fork this repository.
-2. Create a feature branch.
-
-```bash
-git checkout -b feature/your-feature-name
-```
-
-3. Make and test your changes.
-4. Commit your work.
-
-```bash
-git commit -m "Add: your feature description"
-```
-
-5. Push the branch and open a pull request.
-
-```bash
-git push origin feature/your-feature-name
-```
-
----
-
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
